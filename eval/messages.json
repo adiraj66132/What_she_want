@@ -1,0 +1,238 @@
+[
+  {
+    "message": "okay",
+    "min": {
+      "ambiguity": 50
+    }
+  },
+  {
+    "message": "okayyy"
+  },
+  {
+    "message": "fine"
+  },
+  {
+    "message": "fine lol"
+  },
+  {
+    "message": "whatever"
+  },
+  {
+    "message": "whatever 😭"
+  },
+  {
+    "message": "yeah sure"
+  },
+  {
+    "message": "yeah sure haha"
+  },
+  {
+    "message": "leave me alone",
+    "min": {
+      "tension": 70,
+      "emotionalIntensity": 50
+    },
+    "max": {
+      "conversationOpenness": 40,
+      "warmth": 40
+    }
+  },
+  {
+    "message": "bro you're actually funny",
+    "min": {
+      "playfulness": 50,
+      "warmth": 50
+    }
+  },
+  {
+    "message": "okayyy whatever, it's fine 😭",
+    "min": {
+      "ambiguity": 40
+    }
+  },
+  {
+    "message": "goodnight 😴",
+    "min": {
+      "warmth": 40
+    },
+    "max": {
+      "tension": 40
+    }
+  },
+  {
+    "message": "I miss you",
+    "min": {
+      "affectionSignals": 60,
+      "emotionalIntensity": 40
+    }
+  },
+  {
+    "message": "haha stop it 😂",
+    "min": {
+      "playfulness": 55
+    }
+  },
+  {
+    "message": "we need to talk",
+    "min": {
+      "tension": 50,
+      "emotionalIntensity": 25
+    }
+  },
+  {
+    "message": "k",
+    "min": {
+      "ambiguity": 50
+    },
+    "max": {
+      "conversationOpenness": 55
+    }
+  },
+  {
+    "message": "...",
+    "min": {
+      "ambiguity": 60
+    }
+  },
+  {
+    "message": "sorry been so busy lately"
+  },
+  {
+    "message": "when are you free this week?",
+    "min": {
+      "conversationOpenness": 60,
+      "clarity": 60
+    }
+  },
+  {
+    "message": "idk",
+    "min": {
+      "ambiguity": 55
+    }
+  },
+  {
+    "message": "sure, sounds good!",
+    "min": {
+      "warmth": 55,
+      "conversationOpenness": 55
+    }
+  },
+  {
+    "message": "wow okay then",
+    "min": {
+      "ambiguity": 45
+    }
+  },
+  {
+    "message": "love that for you"
+  },
+  {
+    "message": "don't worry about it",
+    "min": {
+      "warmth": 45
+    }
+  },
+  {
+    "message": "I'm fine",
+    "min": {
+      "ambiguity": 50
+    }
+  },
+  {
+    "message": "nothing",
+    "min": {
+      "ambiguity": 55
+    }
+  },
+  {
+    "message": "just tired"
+  },
+  {
+    "message": "you're the best ❤️",
+    "min": {
+      "affectionSignals": 65,
+      "warmth": 60
+    }
+  },
+  {
+    "message": "lol no",
+    "min": {
+      "playfulness": 25,
+      "warmth": 5
+    },
+    "max": {
+      "warmth": 60
+    }
+  },
+  {
+    "message": "maybe another time",
+    "min": {
+      "ambiguity": 45
+    }
+  },
+  {
+    "message": "sorry I fell asleep",
+    "min": {
+      "clarity": 55
+    }
+  },
+  {
+    "message": "that's so cool!!",
+    "min": {
+      "warmth": 70,
+      "emotionalIntensity": 55
+    }
+  },
+  {
+    "message": "why would you say that",
+    "min": {
+      "tension": 45,
+      "emotionalIntensity": 35
+    }
+  },
+  {
+    "message": "I guess",
+    "min": {
+      "ambiguity": 55
+    }
+  },
+  {
+    "message": "no thanks",
+    "min": {
+      "clarity": 60
+    }
+  },
+  {
+    "message": "send it",
+    "min": {
+      "clarity": 70
+    }
+  },
+  {
+    "message": "ok bye",
+    "max": {
+      "conversationOpenness": 50
+    }
+  },
+  {
+    "message": "don't be weird",
+    "min": {
+      "tension": 50
+    }
+  },
+  {
+    "message": "miss u 😭",
+    "min": {
+      "affectionSignals": 55
+    }
+  },
+  {
+    "message": "haha okay I surrender",
+    "min": {
+      "playfulness": 55
+    },
+    "max": {
+      "tension": 40
+    }
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "convo-analyzer",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w @convo/api",
+    "dev:web": "npm run dev -w @convo/web",
+    "typecheck": "npm run typecheck -w @convo/schemas && npm run typecheck -w @convo/api && npm run typecheck -w @convo/web",
+    "eval": "node --env-file-if-exists=.env --import tsx eval/run.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
