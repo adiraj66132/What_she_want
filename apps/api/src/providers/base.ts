@@ -78,6 +78,27 @@ export class OpenAICompatProvider implements AIProvider {
   }
 
   async chat(params: ChatParams): Promise<ChatResult> {
+    try {
+      const result = await this.chatWithModel(params, params.model);
+      return { ...result, model: params.model };
+    } catch (primaryError) {
+      const freeModel = "openrouter/free";
+      if (this.id !== "openrouter" || params.model === freeModel) throw primaryError;
+
+      try {
+        const result = await this.chatWithModel(params, freeModel);
+        return { ...result, model: freeModel };
+      } catch (fallbackError) {
+        const primaryMessage = primaryError instanceof Error ? primaryError.message : String(primaryError);
+        const fallbackMessage = fallbackError instanceof Error ? fallbackError.message : String(fallbackError);
+        throw new Error(
+          `Selected model failed (${primaryMessage}); free-model fallback failed (${fallbackMessage})`
+        );
+      }
+    }
+  }
+
+  private async chatWithModel(params: ChatParams, model: string): Promise<Omit<ChatResult, "model">> {
     const messages = [
       { role: "system" as const, content: params.system },
       { role: "user" as const, content: params.user },
@@ -85,14 +106,14 @@ export class OpenAICompatProvider implements AIProvider {
 
     if (params.jsonSchema) {
       try {
-        const text = await this.complete(params.model, messages, params.jsonSchema);
+        const text = await this.complete(model, messages, params.jsonSchema);
         return { text, usedStructuredOutput: true };
       } catch (err) {
         if (!isStructuredOutputUnsupported(err)) throw err;
       }
     }
 
-    const text = await this.complete(params.model, messages);
+    const text = await this.complete(model, messages);
     return { text, usedStructuredOutput: false };
   }
 

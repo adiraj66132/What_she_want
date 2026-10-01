@@ -40,9 +40,9 @@ fastify.post("/api/analyze", async (req): Promise<AnalyzeResponse> => {
   if (!provider.configured()) fail(`${provider.label} is not configured`, 400);
 
   const started = Date.now();
-  let result, usedStructuredOutput;
+  let result, usedStructuredOutput, usedModel;
   try {
-    ({ result, usedStructuredOutput } = await analyzeMessage(provider, {
+    ({ result, usedStructuredOutput, model: usedModel } = await analyzeMessage(provider, {
       model: body.model,
       message: body.message,
       context: body.context,
@@ -53,7 +53,7 @@ fastify.post("/api/analyze", async (req): Promise<AnalyzeResponse> => {
 
   saveAnalysis({
     provider: body.provider,
-    model: body.model,
+    model: usedModel,
     message: body.saveMessage ? body.message : null,
     result,
   });
@@ -62,7 +62,7 @@ fastify.post("/api/analyze", async (req): Promise<AnalyzeResponse> => {
     result,
     meta: {
       provider: body.provider,
-      model: body.model,
+      model: usedModel,
       durationMs: Date.now() - started,
       usedStructuredOutput,
     },

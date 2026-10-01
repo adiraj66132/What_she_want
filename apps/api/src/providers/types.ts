@@ -10,6 +10,7 @@ export interface ChatParams {
 export interface ChatResult {
   text: string;
   usedStructuredOutput: boolean;
+  model: string;
 }
 
 export interface AIProvider {

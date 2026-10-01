@@ -2,11 +2,15 @@ import type { HistoryRow } from "@convo/schemas";
 
 export default function HistoryView({
   rows,
+  loading,
+  error,
   onOpen,
   onDelete,
   onClose,
 }: {
   rows: HistoryRow[];
+  loading: boolean;
+  error: string;
   onOpen: (row: HistoryRow) => void;
   onDelete: (id: string) => void;
   onClose: () => void;
@@ -30,7 +34,13 @@ export default function HistoryView({
           </button>
         </div>
         <div className="overflow-y-auto p-3">
-          {rows.length === 0 ? (
+          {loading ? (
+            <p className="py-8 text-center text-sm text-zinc-500">Loading history…</p>
+          ) : error ? (
+            <p role="alert" className="py-8 text-center text-sm text-red-300">
+              Could not load history: {error}
+            </p>
+          ) : rows.length === 0 ? (
             <p className="py-8 text-center text-sm text-zinc-500">No analyses yet.</p>
           ) : (
             <ul className="space-y-2">

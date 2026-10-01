@@ -47,6 +47,8 @@ export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [history, setHistory] = useState<HistoryRow[]>([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState("");
   const [useContext, setUseContext] = useState(true);
 
   const scrollRef = useRef<HTMLElement>(null);
@@ -206,10 +208,18 @@ export default function App() {
               ♥ About
             </button>
             <button
-              onClick={() => {
+              onClick={async () => {
                 setSettingsOpen(false);
-                api.history().then(setHistory).catch(() => {});
+                setHistoryLoading(true);
+                setHistoryError("");
                 setHistoryOpen(true);
+                try {
+                  setHistory(await api.history());
+                } catch (e) {
+                  setHistoryError(e instanceof Error ? e.message : String(e));
+                } finally {
+                  setHistoryLoading(false);
+                }
               }}
               className="border border-zinc-800 px-3 py-1.5 text-xs text-zinc-400 transition hover:border-zinc-700 hover:text-zinc-200"
             >
@@ -423,6 +433,8 @@ export default function App() {
       {historyOpen && (
         <HistoryView
           rows={history}
+          loading={historyLoading}
+          error={historyError}
           onOpen={openHistoryRow}
           onDelete={async (id) => {
             await api.deleteHistory(id);
